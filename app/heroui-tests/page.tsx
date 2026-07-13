@@ -46,7 +46,7 @@ export default function HeroUIApp() {
         <Tabs defaultSelectedKey="overview" className="w-full">
           {/* List Section: Houses all tab button triggers */}
           <Tabs.ListContainer>
-            <Tabs.List aria-label="Component categories" variant="primary">
+            <Tabs.List aria-label="Component categories">
               <Tabs.Tab id="overview">
                 <div className="flex items-center gap-2 px-1">
                   <LayoutGrid className="h-4 w-4" />
@@ -89,7 +89,7 @@ export default function HeroUIApp() {
                   <TextField
                     label="Subscriber Email"
                     labelPlacement="outside"
-                    isRequired
+                    isRequired={true}
                     className="w-full flex flex-col gap-1.5"
                   >
                     <div className="relative flex items-center">
@@ -115,6 +115,8 @@ export default function HeroUIApp() {
                     <Button variant="flat" size="sm" onClick={() => setEmail("")}>
                       Clear
                     </Button>
+
+
                     <Button variant="primary" size="sm" endContent={<ArrowRight className="h-3.5 w-3.5" />}>
                       Submit Entry
                     </Button>
@@ -183,6 +185,17 @@ export default function HeroUIApp() {
                 </Card.Content>
               </Card>
             </div>
+            <Card>
+              <Card.Content>
+                <Button variant="primary" size="sm">Primary</Button>
+                <Button variant="secondary" size="sm">Secondary</Button>
+                <Button variant="tertiary" size="sm">Tertiary</Button>
+                <Button variant="outline" size="sm">Outline</Button>
+                <Button variant="ghost" size="sm">Ghost</Button>
+                <Button variant="danger" size="sm">Danger</Button>
+                <Button variant="danger-soft" size="sm">Danger Soft</Button>
+              </Card.Content>
+            </Card>
           </Tabs.Panel>
         </Tabs>
 

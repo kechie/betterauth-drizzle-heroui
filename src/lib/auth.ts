@@ -8,6 +8,7 @@ import { APIError } from "better-auth/api";
 import { db } from "../db";
 import * as authSchema from "../db/schema";
 
+// Admin roles
 // 1. Define your system's resources and permitted CRUD actions
 const statements = {
   user: ["create", "list", "set-role", "ban", "delete"],
@@ -32,7 +33,22 @@ const adminRole = ac.newRole({
   user: ["create", "list", "set-role", "ban"],
   session: ["read"],
 });
+// User roles
+// 1. Define standard, restricted visibility rules for base users/staff/accounting
+const userRole = ac.newRole({
+  user: ["list"], // Can view directory components, but zero write/ban/delete scopes
+  session: ["read"]
+});
 
+const staffRole = ac.newRole({
+  user: ["list"],
+  session: ["read"]
+});
+
+const accountingRole = ac.newRole({
+  user: ["list"],
+  session: ["read"]
+});
 export const auth = betterAuth({
     database: drizzleAdapter(db, {
       provider: "pg",
@@ -41,7 +57,7 @@ export const auth = betterAuth({
     emailAndPassword: {
         enabled: true
     },
-    databaseHooks: {
+/*     databaseHooks: {
       user: {
         create: {
           before: async (user) => {
@@ -57,12 +73,15 @@ export const auth = betterAuth({
           }
         }
       }
-    },
+    }, */
     plugins: [
       admin({
         // 2. Pass your custom Access Control properties cleanly
         ac,
         roles: {
+          user: userRole,
+          staff: staffRole,
+          accounting: accountingRole,
           superadmin: superadminRole,
           admin: adminRole,
           useradmin: useradminRole,

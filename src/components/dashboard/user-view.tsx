@@ -12,7 +12,7 @@ interface UserViewProps {
   };
 }
 
-export default function UserView({ user }: UserViewProps) {
+export default function UserView({ user }: { user: any }) {
   const role = user.role;
 
   return (
@@ -22,13 +22,6 @@ export default function UserView({ user }: UserViewProps) {
         defaultSelectedKey="tab-1"
         className="w-full"
         aria-label="User Workspace Navigation"
-        //color="primary"
-        //variant="underlined"
-        // classNames={{
-        //   tabList: "gap-6 w-full relative rounded-none p-0 border-b border-divider",
-        //   cursor: "w-full bg-primary",
-        //   tab: "max-w-fit px-0 h-12 text-medium",
-        // }}
       >
         <Tabs.ListContainer>
           <Tabs.List aria-label="Showcase submenu" variant="primary">

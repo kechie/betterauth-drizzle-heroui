@@ -15,7 +15,7 @@ export default async function DashboardPage() {
   if (!session) {
     redirect("/sign-in");
   }
-
+  //ignore lint error below
   const userRole = session?.user.role;
   //console.log(userRole)
   return (

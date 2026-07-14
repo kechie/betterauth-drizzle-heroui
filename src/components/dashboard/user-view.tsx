@@ -89,12 +89,7 @@ export default function UserView({ user }: UserViewProps) {
         {/* TAB 2: Clean Security & Device Management Profile Isolation */}
         <Tabs.Panel id="tab-2"
           key="security"
-          title={
-            <div className="flex items-center gap-2">
-              <ShieldCheck size={18} />
-              <span>Security & Devices</span>
-            </div>
-          }
+          title={<ShieldCheck size={18} />}
         >
           <div className="pt-4">
             {/* Session Management component is isolated cleanly right here */}

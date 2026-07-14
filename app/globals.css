@@ -1,8 +1,12 @@
 /* app/globals.css */
 @import "tailwindcss";
 @import "@heroui/styles";
-/*@import "src/themes/ocean.css" layer(theme);*/
 
+@theme {
+  /* This maps the font-sans utility to your Next.js Google font variable */
+  --font-sans: var(--font-jetbrains), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+}
 /*
  * HeroUI Theme Customization
  * Add this to your global.css after importing @heroui/styles
@@ -11,12 +15,11 @@
  * @see https://heroui.com/en/themes to generate custom themes
  */
 
-:root,
+ :root,
 .light,
 .default,
 [data-theme="light"],
 [data-theme="default"] {
-  /* Theme Colors (Light Mode) */
   --accent: oklch(52.82% 0.2628 262.87);
   --accent-foreground: oklch(99.11% 0 0);
   --background: oklch(97.02% 0.0020 262.87);
@@ -49,19 +52,14 @@
   --warning: oklch(0.8095 0.1119 61.69);
   --warning-foreground: oklch(15% 0.0336 61.69);
 
-  /* Border Radius */
+
   --radius: 0.5rem;
   --field-radius: 0.125rem;
-
-  /* Font Family */
-  /* Make sure to load Inter font in your app */
-  --font-sans: var(--font-inter);
 }
 
 .dark,
 [data-theme="dark"] {
   color-scheme: dark;
-  /* Theme Colors (Dark Mode) */
   --accent: oklch(52.82% 0.2628 262.87);
   --accent-foreground: oklch(99.11% 0 0);
   --background: oklch(12.00% 0.0020 262.87);

@@ -1,13 +1,33 @@
 //import Image from "next/image";
 // TODO: Fonts
 // Theming is ok na I think
-import { Link, Surface } from '@heroui/react';
+import { Button, Link, Surface } from '@heroui/react';
 import { ThemeSwitcher } from '@components/theme-switcher';
+import { Inter, JetBrains_Mono } from 'next/font/google'
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+const jet = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+});
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center font-sans">
+    <div className={`flex flex-col flex-1 items-center justify-center`} >
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 sm:items-start">
-        <div className="flex flex-col gap-4">
+        <Button variant="tertiary">Hello HeroUI</Button>
+        <div className="flex flex-wrap gap-3">
+          <Button>Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="tertiary">Tertiary</Button>
+          <Button variant="outline">Outline</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="danger">Danger</Button>
+          <Button variant="danger-soft">Danger Soft</Button>
+        </div>
+        <ThemeSwitcher />
+{/*         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <p className="text-sm font-medium text-muted">Default</p>
             <Surface className="flex min-w-[320px] flex-col gap-3 rounded-3xl p-6" variant="default">
@@ -56,7 +76,7 @@ export default function Home() {
               <ThemeSwitcher />
             </Surface>
           </div>
-        </div>
+        </div> */}
 
       </main>
     </div>

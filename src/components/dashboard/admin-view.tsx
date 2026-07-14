@@ -2,6 +2,8 @@
 import SessionManager from "./session-manager";
 import { Card, CardHeader,Button } from "@heroui/react";
 
+import Link from "next/link";
+
 export default function AdminView({ user }: { user: any }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -11,7 +13,7 @@ export default function AdminView({ user }: { user: any }) {
           <p className="text-default-600 text-sm">Full read/write permissions are active for your profile.</p>
           <div className="flex gap-2">
             <Button variant="danger" >Flush System Cache</Button>
-            <Button variant="primary">Manage User Registrations</Button>
+            <Button variant="primary"><Link href="/dashboard/user-manager">Manage User Registrations</Link></Button>
           </div>
         </Card.Content>
       </Card>

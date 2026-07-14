@@ -11,13 +11,13 @@ export default async function DashboardPage() {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
-
+  //console.log(session.user.role);
   if (!session) {
     redirect("/sign-in");
   }
 
-  const userRole = session.user.role; // e.g., "admin" or "user"
-
+  const userRole = session?.user.role;
+  //console.log(userRole)
   return (
     <div className="min-h-screen bg-background p-6 space-y-6">
       <header className="flex flex-col gap-1 border-b border-divider pb-4">
@@ -28,7 +28,7 @@ export default async function DashboardPage() {
       </header>
 
       {/* Conditionally render views based on the RBAC role */}
-      {userRole === "admin" ? (
+      {userRole === "superadmin" ? (
         <AdminView user={session.user} />
       ) : (
         <UserView user={session.user} />

@@ -8,6 +8,7 @@ export const usersTable = pgTable("users", {
 });
  */
  //import { relations } from "drizzle-orm";
+ //import { relations } from "drizzle-orm";
  import { pgTable, text, timestamp, boolean, index } from "drizzle-orm/pg-core";
 
  export const user = pgTable("user", {
@@ -21,6 +22,10 @@ export const usersTable = pgTable("users", {
      .defaultNow()
      .$onUpdate(() => /* @__PURE__ */ new Date())
      .notNull(),
+   role: text("role"),
+   banned: boolean("banned").default(false),
+   banReason: text("ban_reason"),
+   banExpires: timestamp("ban_expires"),
  });
 
  export const session = pgTable(
@@ -38,6 +43,7 @@ export const usersTable = pgTable("users", {
      userId: text("user_id")
        .notNull()
        .references(() => user.id, { onDelete: "cascade" }),
+     impersonatedBy: text("impersonated_by"),
    },
    (table) => [index("session_userId_idx").on(table.userId)],
  );
@@ -81,6 +87,27 @@ export const usersTable = pgTable("users", {
    },
    (table) => [index("verification_identifier_idx").on(table.identifier)],
  );
+
+ /* export const userRelations = relations(user, ({ many }) => ({
+   sessions: many(session),
+   accounts: many(account),
+ }));
+
+ export const sessionRelations = relations(session, ({ one }) => ({
+   user: one(user, {
+     fields: [session.userId],
+     references: [user.id],
+   }),
+ }));
+
+ export const accountRelations = relations(account, ({ one }) => ({
+   user: one(user, {
+     fields: [account.userId],
+     references: [user.id],
+   }),
+ }));
+  */
+
 
 /*  export const userRelations = relations(user, ({ many }) => ({
    sessions: many(session),

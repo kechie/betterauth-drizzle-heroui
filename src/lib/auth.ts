@@ -10,7 +10,10 @@ export const auth = betterAuth({
     }),
     emailAndPassword: {
         enabled: true // Required if you are building standard sign-in/sign-up components
-    }
+    },
+    plugins: [
+      admin(),
+    ],
 });
 
 

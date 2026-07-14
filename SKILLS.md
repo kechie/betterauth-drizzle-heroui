@@ -11,20 +11,51 @@ Always adhere to the architectural decisions, folder structures, and coding patt
 Ensure new files and features align with this standard structure:
 
 ```text
-src/
-├── app/                  # Next.js App Router pages & route handlers
-│   ├── api/
-│   │   └── auth/
-│   │       └── [...all]/
-│   │           └── route.ts  # Better Auth API handler
+
+app                  # Next.js App Router pages & route handlers  
+├── api
+│   └── auth
+│       └── [...all]
+│           └── route.ts
+├── (auth)
 │   ├── layout.tsx
+│   ├── sign-in
+│   │   └── page.tsx
+│   └── sign-up
+│       └── page.tsx
+├── dashboard
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── user-manager
+│       └── page.tsx
+├── favicon.ico
+├── globals.css
+├── heroui-components
 │   └── page.tsx
-├── db/                   # Database & Drizzle configurations
-│   ├── schema.ts         # Database schemas (including Better Auth tables)
-│   └── index.ts          # Drizzle client instance
-├── lib/
-│   ├── auth.ts           # Server-side Better Auth instance
-│   └── auth-client.ts    # Client-side Better Auth React hooks
-├── components/           # Reusable UI components (HeroUI wrappers)
-└── hooks/                # Custom React hooks
-```
+├── heroui-tests
+│   └── page.tsx
+├── layout.tsx
+├── page.tsx
+└── providers.tsx
+src
+├── components              # React components (reusable across the app)
+│   ├── dashboard
+│   │   ├── admin-view.tsx
+│   │   ├── client-signout.tsx
+│   │   ├── session-manager.tsx
+│   │   ├── sidebar-nav.tsx
+│   │   └── user-view.tsx
+│   ├── sign-in-form.tsx
+│   ├── sign-up-form.tsx
+│   └── theme-switcher.tsx
+├── db                      # Database & Drizzle configurations
+│   ├── index.ts            # Drizzle client instance
+│   └── schema.ts           # Database schemas (including Better Auth tables)
+├── hooks                   # Custom React hooks
+│   └── use-auth.ts        # Custom hook for Better Auth state management (not implemented for this instance)
+├── lib
+│   ├── auth-client.ts      # Client-side Better Auth React hooks
+│   └── auth.ts             # Server-side Better Auth instance
+└── themes                  # Theme stylesheets (can be selected as theme(to be implemented) or copy/paste to globals.css)
+    ├── finance.css
+    └── oceans.css

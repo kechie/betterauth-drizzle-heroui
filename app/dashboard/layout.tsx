@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import SidebarNav from "@components/dashboard/sidebar-nav";
 import { Card } from "@heroui/react";
 import { ShieldCheck, LogOut } from "lucide-react";
-
+import { ThemeSwitcher } from "@/src/components/theme-switcher";
 export default async function DashboardLayout({
   children,
 }: {
@@ -20,7 +20,7 @@ export default async function DashboardLayout({
   }
 
   const user = session.user;
-  const isAdminGroup = ["superadmin", "admin", "useradmin"].includes(user.role);
+  const isAdminGroup = ["superadmin", "admin", "useradmin"].includes(user?.role);
 
   return (
     <div className="flex min-h-screen bg-default-50/50 dark:bg-background">
@@ -65,8 +65,10 @@ export default async function DashboardLayout({
             <span className="text-xs text-default-400 font-mono hidden sm:inline-block">
               {user.email}
             </span>
+            <ThemeSwitcher />
             <SignOutButton />
           </div>
+
         </header>
 
         {/* MAIN DATA STREAM PANEL */}

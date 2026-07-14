@@ -3,8 +3,9 @@ import { betterAuth } from "better-auth";
 import { admin } from "better-auth/plugins";
 import { drizzleAdapter } from "@better-auth/drizzle-adapter";
 import { createAccessControl } from "better-auth/plugins/access";
-import { adminAc } from "better-auth/plugins/admin/access";
-import { APIError } from "better-auth/api";
+import { nextCookies } from "better-auth/next-js";
+//import { adminAc } from "better-auth/plugins/admin/access";
+//import { APIError } from "better-auth/api";
 import { db } from "../db";
 import * as authSchema from "../db/schema";
 
@@ -55,9 +56,12 @@ export const auth = betterAuth({
       schema: authSchema,
     }),
     emailAndPassword: {
-        enabled: true
+      enabled: true,
+      disableSignUp: true,
     },
-/*     databaseHooks: {
+    /*  disable registration when first user registers (first user is automatically superadmin)
+    useful for single-user installations where admin access is granted on first login
+    databaseHooks: {
       user: {
         create: {
           before: async (user) => {
@@ -88,5 +92,6 @@ export const auth = betterAuth({
         },
         adminRoles: ["superadmin", "admin", "useradmin"],
       }),
+      nextCookies(),
     ],
 });

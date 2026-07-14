@@ -30,15 +30,8 @@ export default function SignUpForm() {
 
     } else {
       // Redirect to the sign-in page with delay
-      <Link href="/sign-in">Sign In Instead</Link>
-      window.location.href = "/sign-in";
+      return <Link href="/sign-in">Sign In Instead</Link>;
     }
-    /* await authClient.signUp.email({
-      name,
-      email,
-      password,
-      callbackURL: "/sign-in",
-    }); */
 
     setLoading(false);
   };
@@ -51,6 +44,7 @@ export default function SignUpForm() {
                 <Card.Content className="flex gap-3 items-center p-4 text-xs font-medium">
                   <ShieldAlert className="shrink-0" size={16} />
                   <p>{errorMessage}</p>
+                  <Link href="/sign-in">Sign In Instead</Link>
                 </Card.Content>
               </Card>
             )}

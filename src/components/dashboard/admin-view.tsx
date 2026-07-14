@@ -10,8 +10,8 @@ export default function AdminView({ user }: { user: any }) {
         <Card.Content className="space-y-4">
           <p className="text-default-600 text-sm">Full read/write permissions are active for your profile.</p>
           <div className="flex gap-2">
-            <Button color="danger" variant="flat">Flush System Cache</Button>
-            <Button color="primary">Manage User Registrations</Button>
+            <Button variant="danger" >Flush System Cache</Button>
+            <Button variant="primary">Manage User Registrations</Button>
           </div>
         </Card.Content>
       </Card>
@@ -23,6 +23,7 @@ export default function AdminView({ user }: { user: any }) {
           <p className="text-xs text-default-400">Database node replication functional.</p>
         </Card.Content>
       </Card>
+      <SessionManager />
     </div>
   );
 }

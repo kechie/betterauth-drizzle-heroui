@@ -16,11 +16,13 @@ export default function SessionManager() {
   const [sessions, setSessions] = useState<SessionData[]>([]);
   const [loading, setLoading] = useState(true);
   const [revokingId, setRevokingId] = useState<string | null>(null);
+  const [revokingToken, setRevokingToken] = useState<string | null>(null);
 
   const fetchSessions = async () => {
     setLoading(true);
     // Better Auth native client method to retrieve all active sessions for current user
     const { data } = await authClient.listSessions();
+    console.log(data);
     if (data) setSessions(data as any);
     setLoading(false);
   };
@@ -29,13 +31,14 @@ export default function SessionManager() {
     fetchSessions();
   }, []);
 
-  const handleRevoke = async (id: string) => {
-    setRevokingId(id);
+  const handleRevoke = async (token: string) => {
+    console.log("revoking", token)
+    setRevokingToken(token);
     // Terminate specific login token cleanly from the DB
-    await authClient.revokeSession({ id });
+    await authClient.revokeSession({ token });
     // Refresh listing
     await fetchSessions();
-    setRevokingId(null);
+    setRevokingToken(null);
   };
 
   const getDeviceIcon = (ua: string | null) => {
@@ -50,8 +53,9 @@ export default function SessionManager() {
   if (loading) {
     return (
       <Card className="w-full">
+        <Card.Title>Loading active devices...</Card.Title>
         <Card.Content className="flex items-center justify-center p-12">
-          <Spinner label="Loading active devices..." variant="primary" />
+          <Spinner variant="primary" />
         </Card.Content>
       </Card>
     );
@@ -72,7 +76,7 @@ export default function SessionManager() {
           <p className="text-small text-default-400 py-4">No active sessions located.</p>
         ) : (
           sessions.map((session) => (
-            <div key={session.id} className="flex items-center justify-between py-4 first:pt-0 last:pb-0">
+            <div key={session.token} className="flex items-center justify-between py-4 first:pt-0 last:pb-0">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-default-100 rounded-lg border border-divider">
                   {getDeviceIcon(session.userAgent)}
@@ -88,11 +92,10 @@ export default function SessionManager() {
               </div>
 
               <Button
-                color="danger"
+                variant="danger"
                 size="sm"
-                variant="flat"
-                isLoading={revokingId === session.id}
-                onClick={() => handleRevoke(session.id)}
+                isLoading={revokingToken === session.token}
+                onClick={() => handleRevoke(session.token)}
               >
                 Sign Out
               </Button>

@@ -95,7 +95,7 @@ export default function SessionManager() {
           ) : (
             sessions.map((session) => (
               <div key={session.token} className="flex items-center justify-between py-4 first:pt-0 last:pb-0">
-                {/* ... item layout stays exactly the same ... */}
+                {/* TODO: ... item layout stays exactly the same ... */}
               </div>
             ))
           )}

@@ -1,10 +1,10 @@
-# ⚡ Next.js + HeroUI + Drizzle + Better Auth Starter
+# Next.js + HeroUI + Drizzle + Better Auth Starter
 
 A production-ready, type-safe Next.js boilerplate. This setup features a robust database layer with Drizzle ORM, secure session-based authentication with Better Auth, modern accessible UI styling via HeroUI, and standard Lucide React icons.
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 ├── src/

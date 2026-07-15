@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@better-auth/drizzle-adapter": "^1.6.23",
+    "@gravity-ui/icons": "^2.20.0",
     "@heroui/react": "^3.2.2",
     "@heroui/styles": "^3.2.2",
     "better-auth": "^1.6.23",

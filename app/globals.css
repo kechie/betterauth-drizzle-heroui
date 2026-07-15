@@ -3,9 +3,9 @@
 @import "@heroui/styles";
 
 @theme {
-  /* This maps the font-sans utility to your Next.js Google font variable */
-  --font-sans: var(--font-jetbrains), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+  /* This maps the font-sans utility to your Next.js Google font variable change layout.tsx html class as well */
+  --font-sans: var(--font-varela-round), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-varela-round), ui-monospace, SFMono-Regular, monospace;
 }
 /*
  * HeroUI Theme Customization

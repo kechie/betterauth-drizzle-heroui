@@ -1,18 +1,36 @@
 // app/layout.tsx
 import "./globals.css";
 import { Providers } from "./providers";
-import { Inter, JetBrains_Mono } from 'next/font/google'
+import { Inter, JetBrains_Mono , Varela_Round, Jost, Montserrat} from 'next/font/google'
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const varelaRound = Varela_Round({
+  variable: "--font-varela-round",
+  subsets: ['latin'],
+  weight: '400', // You must explicitly define this
+});
+/* const jost = Jost({
+  variable: "--font-jost",
   subsets: ["latin"],
 });
 const jet = JetBrains_Mono({
   variable: "--font-jetbrains",
   subsets: ["latin"],
+}); */
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
 });
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jet.variable}`} suppressHydrationWarning>
+    /*   <html lang="en" className={`${inter.variable} ${jet.variable}`} suppressHydrationWarning>
+       classname will use the fonts defined above but limited to 3 fonts
+       change global styles to use these fonts*/
+    <html lang="en" className={`${varelaRound.variable} ${montserrat.variable} ${inter.variable}`} suppressHydrationWarning>
       <body className={`bg-background text-foreground h-full antialiased`}>
         <Providers>{children}</Providers>
       </body>
